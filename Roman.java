@@ -63,25 +63,25 @@ public class Roman
          	case 'I':
          	case 'X':
          	case 'C':
-         	case 'M':             
-               System.out.print("It's working!\n\n");
+         	case 'M': 
+                       
                count++;
-               System.out.print("The count is: " + count + ".\n\n");
+               
                if (count > 2)
-               {
-                  System.out.print("Nevermind...\n\n");
+               
                   return false;
-               }
+         
                else
+               
                   continue;
             } 
          }
          
          else
-         {
+         
             count = 0;
-            System.out.print("Resetting the count back to zero.\n\n");
-         }
+            
+         
       
       }//end for
       return true;
