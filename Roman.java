@@ -37,70 +37,133 @@ public class Roman
       return roman;
    }
    
+   public boolean validRoman()
+   {
+      int leng = this.roman.length();   
+      char num = ' ';
+      char nextNum = ' ';
+      int count = 0;
+      
+      for (int i = 0; i <= leng - 2; i++)
+      {
+         num = this.roman.charAt(i);
+         nextNum = this.roman.charAt(i + 1);
+         
+
+               
+         if (num == nextNum)
+         {
+            switch (num)
+            {
+         	case 'V':
+         	case 'L':
+         	case 'D':
+         		System.out.print("Invalid Input Found");
+         		System.exit(0);
+         	case 'I':
+         	case 'X':
+         	case 'C':
+         	case 'M':             
+               System.out.print("It's working!\n\n");
+               count++;
+               System.out.print("The count is: " + count + ".\n\n");
+               if (count > 2)
+               {
+                  System.out.print("Nevermind...\n\n");
+                  return false;
+               }
+               else
+                  continue;
+            } 
+         }
+         
+         else
+         {
+            count = 0;
+            System.out.print("Resetting the count back to zero.\n\n");
+         }
+      
+      }//end for
+      return true;
+   }
+   
    public int romanToDecimal()
    {
       int leng = this.roman.length();
       int num = 0;
       int numBefore = 0;
       
-      for (int i = leng - 1; i >= 0; i--)
+      if (this.validRoman())
       {
-         char single = this.roman.charAt(i);
-         
-            switch (single)
-            {
-               
-               case 'I':
-                  numBefore = num;
-                  num = 1;
-                  break;
-                  
-               case 'V':
-                  numBefore = num;
-                  num = 5;
-                  break;
-               
-               case 'X':
-                  numBefore = num;
-                  num = 10;
-                  break;
-                  
-               case 'L':
-                  numBefore = num;
-                  num = 50;
-                  break;
-                  
-               case 'C':
-                  numBefore = num;
-                  num = 100;
-                  break;
-                  
-               case 'D':
-                  numBefore = num;
-                  num = 500;
-                  break;
-                  
-               case 'M':
-                  numBefore = num;
-                  num = 1000;
-                  break;
-                  
-               default:
-                  System.out.print("Invalid Input Found");
-                  System.exit(0);
-                  
-               
-              }
-         
-         if (num < numBefore)
+      
+      
+         for (int i = leng - 1; i >= 0; i--)
+         {
+            char single = this.roman.charAt(i);
             
-            decimal -= num;
-         
-         else
+               switch (single)
+               {
+                  
+                  case 'I':
+                     numBefore = num;
+                     num = 1;
+                     break;
+                     
+                  case 'V':
+                     numBefore = num;
+                     num = 5;
+                     break;
+                  
+                  case 'X':
+                     numBefore = num;
+                     num = 10;
+                     break;
+                     
+                  case 'L':
+                     numBefore = num;
+                     num = 50;
+                     break;
+                     
+                  case 'C':
+                     numBefore = num;
+                     num = 100;
+                     break;
+                     
+                  case 'D':
+                     numBefore = num;
+                     num = 500;
+                     break;
+                     
+                  case 'M':
+                     numBefore = num;
+                     num = 1000;
+                     break;
+                     
+                  default:
+                     System.out.print("Invalid Input Found");
+                     System.exit(0);
+                     
+                  
+                 }
             
-            decimal += num;
+            if (num < numBefore)
+               
+               decimal -= num;
+            
+            else
+               
+               decimal += num;
+         }//end for
+            
+         
       }
-            
+         
+      else
+      {
+         System.out.print("Invalid Input Found");
+         System.exit(0);
+      }
+      
       return decimal;
 
    }
@@ -139,6 +202,7 @@ public class Roman
    public static void main(String[] args)
    {
       Roman user = new Roman();
+      
       user.romanToDecimal();
       user.printQuestion();
       
